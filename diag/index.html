@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="chess" onclick="{
+        const rows = ['1', '2', '3', '4', '5', '6', '7', '8'];
+        const columns = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+        const cellCoordinates = [event.target.getAttribute('x-row'), event.target.getAttribute('x-column')];
+        document.querySelectorAll('.clicked').forEach(cell => cell.classList.remove('clicked'));
+        document.querySelectorAll('.next-cell').forEach(cell => cell.classList.remove('next-cell'));
+        event.target.classList.add('clicked');
+        function findNextRows(coordinates) {
+            const index = rows.indexOf(coordinates[0]);
+            return [
+                [
+                    rows[index + 2],
+                    rows[index + 1],
+                ],
+                [
+                    rows[index - 1],
+                    rows[index - 2],
+                ]
+            ];
+        }
+        function findNextColumns(coordinates) {
+            const index = columns.indexOf(coordinates[1]);
+            return [
+                [
+                    columns[index - 2],
+                    columns[index - 1],
+                ],
+                [
+                    columns[index + 1],
+                    columns[index + 2],
+                ]
+            ];
+        }
+
+        const nextRows = findNextRows(cellCoordinates);
+        const nextColumns = findNextColumns(cellCoordinates);
+        const nextCells = getNextCells(cellCoordinates, nextRows, nextColumns);
+
+        function getNextCells (coordinates, rows, columns) {
+            let result = rows.reduce((acc, el, index) => {
+                columns[index].reverse()
+                el.forEach((num, i) => {
+                    acc.push([num, columns[index][i]]);
+                });
+                return acc;
+            }, []);
+            result = rows.reverse().reduce((acc, el, index) => {
+                columns[index].reverse()
+                el.forEach((num, i) => {
+                    acc.push([num, columns[index][i]]);
+                });
+                return acc;
+            }, result);
+
+            return result;
+        }
+
+        function addClassToNextCells (cells) {
+            cells.forEach(cell => {
+                const cellsInRow = [...document.querySelectorAll(`[x-row='${cell[0]}']`)].filter(el => el.getAttribute('x-column') === cell[1]);
+                const cellsInColumn = [...document.querySelectorAll(`[x-column='${cell[1]}']`)].filter(el => el.getAttribute('x-row') === cell[0]);
+                cellsInRow.forEach(el => el.classList.add('next-cell'));
+            })
+        }
+        addClassToNextCells(nextCells);
+
+
+        
+        }">
+        <div class="row">
+            <div class="cell" x-row="1" x-column="a"></div>
+            <div class="cell" x-row="1" x-column="b"></div>
+            <div class="cell" x-row="1" x-column="c"></div>
+            <div class="cell" x-row="1" x-column="d"></div>
+            <div class="cell" x-row="1" x-column="e"></div>
+            <div class="cell" x-row="1" x-column="f"></div>
+            <div class="cell" x-row="1" x-column="g"></div>
+            <div class="cell" x-row="1" x-column="h"></div>
+        </div>
+        <div class="row">
+            <div class="cell" x-row="2" x-column="a"></div>
+            <div class="cell" x-row="2" x-column="b"></div>
+            <div class="cell" x-row="2" x-column="c"></div>
+            <div class="cell" x-row="2" x-column="d"></div>
+            <div class="cell" x-row="2" x-column="e"></div>
+            <div class="cell" x-row="2" x-column="f"></div>
+            <div class="cell" x-row="2" x-column="g"></div>
+            <div class="cell" x-row="2" x-column="h"></div>
+        </div>
+        <div class="row">
+            <div class="cell" x-row="3" x-column="a"></div>
+            <div class="cell" x-row="3" x-column="b"></div>
+            <div class="cell" x-row="3" x-column="c"></div>
+            <div class="cell" x-row="3" x-column="d"></div>
+            <div class="cell" x-row="3" x-column="e"></div>
+            <div class="cell" x-row="3" x-column="f"></div>
+            <div class="cell" x-row="3" x-column="g"></div>
+            <div class="cell" x-row="3" x-column="h"></div>
+        </div>
+        <div class="row">
+            <div class="cell" x-row="4" x-column="a"></div>
+            <div class="cell" x-row="4" x-column="b"></div>
+            <div class="cell" x-row="4" x-column="c"></div>
+            <div class="cell" x-row="4" x-column="d"></div>
+            <div class="cell" x-row="4" x-column="e"></div>
+            <div class="cell" x-row="4" x-column="f"></div>
+            <div class="cell" x-row="4" x-column="g"></div>
+            <div class="cell" x-row="4" x-column="h"></div>
+        </div>
+        <div class="row">
+            <div class="cell" x-row="5" x-column="a"></div>
+            <div class="cell" x-row="5" x-column="b"></div>
+            <div class="cell" x-row="5" x-column="c"></div>
+            <div class="cell" x-row="5" x-column="d"></div>
+            <div class="cell" x-row="5" x-column="e"></div>
+            <div class="cell" x-row="5" x-column="f"></div>
+            <div class="cell" x-row="5" x-column="g"></div>
+            <div class="cell" x-row="5" x-column="h"></div>
+        </div>
+        <div class="row">
+            <div class="cell" x-row="6" x-column="a"></div>
+            <div class="cell" x-row="6" x-column="b"></div>
+            <div class="cell" x-row="6" x-column="c"></div>
+            <div class="cell" x-row="6" x-column="d"></div>
+            <div class="cell" x-row="6" x-column="e"></div>
+            <div class="cell" x-row="6" x-column="f"></div>
+            <div class="cell" x-row="6" x-column="g"></div>
+            <div class="cell" x-row="6" x-column="h"></div>
+        </div>
+        <div class="row">
+            <div class="cell" x-row="7" x-column="a"></div>
+            <div class="cell" x-row="7" x-column="b"></div>
+            <div class="cell" x-row="7" x-column="c"></div>
+            <div class="cell" x-row="7" x-column="d"></div>
+            <div class="cell" x-row="7" x-column="e"></div>
+            <div class="cell" x-row="7" x-column="f"></div>
+            <div class="cell" x-row="7" x-column="g"></div>
+            <div class="cell" x-row="7" x-column="h"></div>
+        </div>
+        <div class="row">
+            <div class="cell" x-row="8" x-column="a"></div>
+            <div class="cell" x-row="8" x-column="b"></div>
+            <div class="cell" x-row="8" x-column="c"></div>
+            <div class="cell" x-row="8" x-column="d"></div>
+            <div class="cell" x-row="8" x-column="e"></div>
+            <div class="cell" x-row="8" x-column="f"></div>
+            <div class="cell" x-row="8" x-column="g"></div>
+            <div class="cell" x-row="8" x-column="h"></div>
+        </div>
+    </div>
+
+    <style>
+        .chess {
+            width: 300px;
+            height: 300px;
+        }
+
+        .row {
+            display: flex;
+        }
+
+        .cell {
+            width: 30px;
+            height: 30px;
+        }
+
+        .row .cell:nth-of-type(2n + 1) {
+            background-color: #f4cd8d;
+        }
+
+        .row .cell:nth-of-type(2n) {
+            background-color: #745853;
+        }
+
+        .row:nth-of-type(2n) .cell:nth-of-type(2n + 1) {
+            background-color: #745853;
+        }
+        .row:nth-of-type(2n) .cell:nth-of-type(2n) {
+            background-color: #f4cd8d;
+        }
+
+        .chess .row .cell.clicked {
+            background-color: #ff0000;
+        }
+        .chess .row .cell.next-cell {
+            background-color: #0000ff;
+        }
+    </style>
+</body>
+</html>
