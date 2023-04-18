@@ -1,0 +1,92 @@
+{
+  "objectFirst": {
+    "key": "myConfig:key",
+    "key2": "myConfig:key2",
+    "key3": 10,
+    "key4": {
+      "innerKey": "innerKey",
+      "innerObj": {
+        "test": 123,
+        "key": null,
+        "someOtherKey": []
+      }
+    },
+    "array": [
+      "myConfig:array1",
+      "myConfig:array2",
+      "myConfig:array3",
+      {
+        "key": "myConfig:array4"
+      }
+    ]
+  },
+  "object2First": {
+    "options": {
+      "key": "myConfig:key",
+      "key2": "myConfig:key2",
+      "key3": 10,
+      "key4": {
+        "innerKey": "innerKey",
+        "innerObj": {
+          "test": 123,
+          "key": null,
+          "someOtherKey": []
+        }
+      },
+      "array": [
+        "myConfig:array1",
+        "myConfig:array2",
+        "myConfig:array3",
+        {
+          "key": "myConfig:array4"
+        }
+      ]
+    },
+    "key": "myConfig:object2key"
+  },
+  "objectSecond": {
+    "key": "myConfig:key",
+    "key2": "myConfig:key2",
+    "key3": 10,
+    "key4": {
+      "innerKey": "innerKey",
+      "innerObj": {
+        "test": 123,
+        "key": null,
+        "someOtherKey": []
+      }
+    },
+    "array": [
+      "myConfig:array1",
+      "myConfig:array2",
+      "myConfig:array3",
+      {
+        "key": "myConfig:array4"
+      }
+    ]
+  },
+  "object2Second": {
+    "options": {
+      "key": "myConfig:key",
+      "key2": "myConfig:key2",
+      "key3": 10,
+      "key4": {
+        "innerKey": "innerKey",
+        "innerObj": {
+          "test": 123,
+          "key": null,
+          "someOtherKey": []
+        }
+      },
+      "array": [
+        "myConfig:array1",
+        "myConfig:array2",
+        "myConfig:array3",
+        {
+          "key": "myConfig:array4"
+        }
+      ]
+    },
+    "key": "myConfig:object2key"
+  }
+}
